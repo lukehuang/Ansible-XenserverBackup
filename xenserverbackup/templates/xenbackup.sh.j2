@@ -1,0 +1,5 @@
+#!/bin/bash
+PATH=/opt/xensource/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+PASSWORD=" {{ password_host }} "
+LOGXEN={{ log_xen }}
+python /opt/xenserver/VmBackup.py $PASSWORD {{ hostscfg }} > $LOGXEN 2>&1

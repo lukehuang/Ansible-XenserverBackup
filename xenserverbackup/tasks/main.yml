@@ -1,0 +1,20 @@
+---
+
+- name: Create Xendir
+  file:
+    path={{ dirxenbackup }} state=directory owner=root group=root mode=0544 recurse=yes
+
+- name: VmBackup.py
+  template: src=VmBackup.py.j2 dest={{ dirxenbackup }}/VmBackup.py owner=root group=root mode=0644
+
+- name: Hosts.cfg
+  template: src=hosts.cfg.j2 dest={{ hostscfg }} owner=root group=root mode=0644
+
+- name: Backup Script
+  template: src=xenbackup.sh.j2 dest={{ script_dir }} owner=root group=root mode=a+x
+
+- name: Create LogFIle
+  file: path={{ log_xen }} state=touch owner=root group=sys mode=0644
+
+- name: Schedule Ntpdate
+  cron: name="BackupXenServer" hour="00" minute="30" job={{ script_dir }}

@@ -1,0 +1,10 @@
+dirxenbackup: /opt/xenserver
+dirvmbackup.py: /opt/xenserver/VmBackup.py
+max_backups: 2
+pool_db_backup: 0
+backup_dir: /mnt
+host01: atum
+password_host: 22161443@Lh0st.carpa
+log_xen: /var/log/backupxen.log
+hostscfg: /opt/xenserver/hosts.cfg
+script_dir: /usr/sbin/xenbackup.sh
